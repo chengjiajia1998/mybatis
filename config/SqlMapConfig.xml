@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--引入属性配置文件 -->
+    <properties resource="db.properties"/>
+    <!--类型别名-->
+    <typeAliases>
+        <!--<typeAlias type="entity.User" alias="user"></typeAlias>-->
+        <!--  <typeAlias type="entity.Student" alias="student"></typeAlias>
+
+          <typeAlias type="entity.User" alias="user"></typeAlias>
+          <typeAlias type="entity.User" alias="user"></typeAlias>-->
+
+        <!--
+            package:包名的形式
+                entity.类名   别名就是 类名的首字母小写
+        -->
+        <package name="entity"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+
+            </dataSource>
+        </environment>
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!-- <mapper url="" resource="dao\UserMapper.xml"/>-->
+        <!--
+            使用class属性： 名字为 包名+类名    mapper映射文件对应的接口全限定名 dao.UserMapper
+            mapper
+            注意：映射文件要和对应接口在同一个位置，而且名字也要一直
+
+            <mapper class="dao.UserMapper"></mapper>
+        -->
+        <!-- <mapper class="dao.UserMapper"></mapper>-->
+
+        <!--
+            注册指定包下的所有 mapper 接口
+
+            注意：此种方法要求 mapper 接口名称和 mapper 映射文件名称相同，且放在同一个目录中。
+        -->
+        <package name="dao"/>
+
+    </mappers>
+</configuration>
